@@ -5980,6 +5980,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="pie_action_none">None</string>
 
     <!-- HALO -->
+    <string name="halo_enabled_title">Enable HALO</string>
+    <string name="halo_enabled_summary">Completely enable or disable HALO</string> 
+    <string name="halo_settings_title">HALO Settings</string>
+    <string name="halo_settings_summary">Configure halo options</string>
     <string name="halo_options_title">HALO</string>
     <string name="halo_hide_title">Hide HALO after activity</string>
     <string name="halo_hide_summary">HALO will appear for incoming tasks and scroll out of sight after a while</string>
@@ -5991,5 +5995,14 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="halo_state_white">White list</string>
     <string name="halo_pause_title">HALO pause active app</string>
     <string name="halo_pause_summary">When opening an app with HALO the underlying app will get paused</string>
+    <string name="halo_style_title">HALO style</string>
+    <string name="halo_style_summary">Different style of HALO bubbles</string>
+    <string name="halo_blue">Blue</string>
+    <string name="halo_green">Green</string>
+    <string name="halo_white">White</string>
+    <string name="halo_purple">Purple</string>
+    <string name="halo_red">Red</string>
+    <string name="halo_yellow">Yellow</string>
+    <string name="halo_black">Black</string>
 
 </resources>
