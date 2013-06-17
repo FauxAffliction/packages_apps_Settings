@@ -1518,6 +1518,7 @@
         <activity android:name=".slim.InterfaceSettings" />
         <activity android:name=".slim.PerformanceSettings" />
         <activity android:name=".slim.PowerWidget" />
+	<activity android:name=".slim.Halo" />
         <activity android:name=".slim.QuietHours" />
         <activity android:name=".slim.PowerMenu" />
         <activity android:name=".slim.SoundSettings" />
