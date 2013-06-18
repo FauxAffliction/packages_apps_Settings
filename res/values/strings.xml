@@ -4397,9 +4397,6 @@
 
     <!-- Label for are-notifications-enabled checkbox in app details [CHAR LIMIT=20] -->
     <string name="app_notifications_switch_label">Show notifications</string>
-    <!-- Label for are-notifications-enabled checkbox in app details [CHAR LIMIT=20] -->
-    <string name="app_halo_label_black">Blacklist HALO notifications</string>
-    <string name="app_halo_label_white">Whitelist HALO notifications</string>
 
     <!--  Help URLs for some screens. Not specified here. Specified in product overlays --><skip/>
     <!-- Help menu label [CHAR LIMIT=20] -->
@@ -5979,30 +5976,21 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="pie_action_quicksettings">Quicksettings panel</string>
     <string name="pie_action_none">None</string>
 
+     <!-- Label for are-notifications-enabled checkbox in app details [CHAR LIMIT=20] -->
+    <string name="app_halo_label_black">Blacklist HALO notifications</string>
+    <string name="app_halo_label_white">Whitelist HALO notifications</string>
+
     <!-- HALO -->
-    <string name="halo_enabled_title">Enable HALO</string>
-    <string name="halo_enabled_summary">Completely enable or disable HALO</string> 
-    <string name="halo_settings_title">HALO Settings</string>
-    <string name="halo_settings_summary">Configure halo options</string>
-    <string name="halo_options_title">HALO</string>
+    <string name="halo_options_title">Slim HALO</string>
     <string name="halo_hide_title">Hide HALO after activity</string>
     <string name="halo_hide_summary">HALO will appear for incoming tasks and scroll out of sight after a while</string>
     <string name="halo_reversed_title">Reverse HALO gestures</string>
-    <string name="halo_reversed_summary">Applies tasking or dragging to the double-tap-swipe gesture</string>
+    <string name="halo_reversed_summary">Applies for task switching and moving gestures</string>
     <string name="halo_state_title">HALO policy</string>
     <string name="halo_state_summary">For black/white-listing notifications pinging through HALO</string>
     <string name="halo_state_black">Black list</string>
     <string name="halo_state_white">White list</string>
-    <string name="halo_pause_title">HALO pause active app</string>
+    <string name="halo_pause_title">Pause active app</string>
     <string name="halo_pause_summary">When opening an app with HALO the underlying app will get paused</string>
-    <string name="halo_style_title">HALO style</string>
-    <string name="halo_style_summary">Different style of HALO bubbles</string>
-    <string name="halo_blue">Blue</string>
-    <string name="halo_green">Green</string>
-    <string name="halo_white">White</string>
-    <string name="halo_purple">Purple</string>
-    <string name="halo_red">Red</string>
-    <string name="halo_yellow">Yellow</string>
-    <string name="halo_black">Black</string>
 
 </resources>
