@@ -4853,6 +4853,15 @@
     <string name="ime_switcher_notify">Selector notification</string>
     <string name="ime_switcher_notify_summary">Display input method selector notification</string>
 
+    <!-- Power Widget toggle color -->
+    <string name="toggle_color_title">Toggles color and bar</string>
+    <string name="enable_toggle_colors_title">Enable toggle colors</string>
+    <string name="enable_toggle_bar_title">Enable toggle bar</string>
+    <string name="toggle_icon_color_on_title">Color icons (on)</string>
+    <string name="toggle_icon_color_on_summary">Sets color for activated toggle icons</string>
+    <string name="toggle_icon_color_off_title">Color icons (off)</string>
+    <string name="toggle_icon_color_off_summary">Sets color for not activated toggle icons</string>
+
     <!-- Status bar -->
     <string name="status_bar_title">Status bar</string>
     <string name="status_bar_general_title">General</string>
