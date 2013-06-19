@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 ParanoidAndroid Project
+ * Copyright (C) 2013 SlimRoms Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,11 +51,17 @@ public class Halo extends SettingsPreferenceFragment
     private static final String KEY_HALO_HIDE = "halo_hide";
     private static final String KEY_HALO_REVERSED = "halo_reversed";
     private static final String KEY_HALO_PAUSE = "halo_pause";
+    private static final String PREF_HALO_STYLE = "halo_style";
+    private static final String KEY_HALO_ENABLED = "halo_enabled";
+    
 
     private ListPreference mHaloState;
+    private ListPreference mHaloStyle;
     private CheckBoxPreference mHaloHide;
     private CheckBoxPreference mHaloReversed;
     private CheckBoxPreference mHaloPause;
+    private CheckBoxPreference mHaloEnabled;
+   
 
     private Context mContext;
     private INotificationManager mNotificationManager; 
@@ -70,6 +76,10 @@ public class Halo extends SettingsPreferenceFragment
         mNotificationManager = INotificationManager.Stub.asInterface(
                 ServiceManager.getService(Context.NOTIFICATION_SERVICE));
 
+	mHaloEnabled = (CheckBoxPreference) findPreference(KEY_HALO_ENABLED);
+        mHaloEnabled.setChecked(Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.HALO_ENABLED, 0) == 1);
+
         mHaloState = (ListPreference) findPreference(KEY_HALO_STATE);
         mHaloState.setValue(String.valueOf((isHaloPolicyBlack() ? "1" : "0")));
         mHaloState.setOnPreferenceChangeListener(this); 
@@ -81,6 +91,9 @@ public class Halo extends SettingsPreferenceFragment
         mHaloReversed = (CheckBoxPreference) findPreference(KEY_HALO_REVERSED);
         mHaloReversed.setChecked(Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.HALO_REVERSED, 1) == 1);
+
+	mHaloStyle = (ListPreference) findPreference(PREF_HALO_STYLE);
+        mHaloStyle.setOnPreferenceChangeListener(this);
 
         int isLowRAM = (ActivityManager.isLargeRAM()) ? 0 : 1;
         mHaloPause = (CheckBoxPreference) findPreference(KEY_HALO_PAUSE);
@@ -99,7 +112,11 @@ public class Halo extends SettingsPreferenceFragment
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if  (preference == mHaloHide) {
+        if  (preference == mHaloEnabled) {
+            Settings.System.putInt(mContext.getContentResolver(),
+                    Settings.System.HALO_ENABLED, mHaloEnabled.isChecked()
+                    ? 1 : 0);
+        } else if  (preference == mHaloHide) {
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.HALO_HIDE, mHaloHide.isChecked()
                     ? 1 : 0);
@@ -123,6 +140,12 @@ public class Halo extends SettingsPreferenceFragment
             } catch (android.os.RemoteException ex) {
                 // System dead
             }
+            return true;
+	} else if (preference == mHaloStyle) {
+            int color = Integer.valueOf((String) Value);
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.HALO_STYLE, color);
+            Helpers.restartSystemUI();
             return true;
         }
         return false;
