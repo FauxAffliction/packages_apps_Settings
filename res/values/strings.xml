@@ -4589,6 +4589,8 @@
     <string name="brightness_slider_bottom">On the bottom</string>
     <string name="brightness_slider_none">Don\'t Show</string>
 
+    <string name="dialog_indicator_color_title">Select color</string>
+
     <!-- Profiles settings  -->
     <string name="profiles_settings_title">Profiles</string>
     <string name="profiles_general_title">General</string>
@@ -5995,6 +5997,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="halo_settings_title">HALO Settings</string>
     <string name="halo_settings_summary">Configure halo options</string> 
     <string name="halo_options_title">Slim HALO</string>
+    <string name="halo_app">HALO)))</string>
     <string name="halo_hide_title">Hide HALO after activity</string>
     <string name="halo_hide_summary">HALO will appear for incoming tasks and scroll out of sight after a while</string>
     <string name="halo_reversed_title">Reverse HALO gestures</string>
@@ -6005,14 +6008,17 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="halo_state_white">White list</string>
     <string name="halo_pause_title">Pause active app</string>
     <string name="halo_pause_summary">When opening an app with HALO the underlying app will get paused</string>
-    <string name="halo_style_title">HALO style</string>
-    <string name="halo_style_summary">Different color of HALO bubbles</string>
-    <string name="halo_blue">Blue</string>
-    <string name="halo_green">Green</string>
-    <string name="halo_white">White</string>
-    <string name="halo_purple">Purple</string>
-    <string name="halo_red">Red</string>
-    <string name="halo_yellow">Yellow</string>
-    <string name="halo_black">Black</string>
+    <string name="halo_colors_title">Custom colors</string>
+    <string name="halo_colors_summary">Enable custom colors for HALO instead of the default theme colors</string>
+    <string name="halo_circle_color_title">Circle color</string>
+    <string name="halo_bubble_color_title">Speech bubble color</string>
+    <string name="halo_bubble_text_color_title">Speech bubble text color</string>
+    <string name="halo_effect_color_title">Effect color</string>
+    <string name="halo_effect_color_summary">Requires a systemui restart</string>
+
+    <!-- Clear Recents Position --> 
+    <string name="clear_recents_position_title">Clear recents position</string>
+    <string name="clear_recents_position_left">Left</string>
+    <string name="clear_recents_position_right">Right</string>
 
 </resources>

@@ -49,6 +49,7 @@ public class UserInterface extends SettingsPreferenceFragment implements OnPrefe
     private static final String MISC_SETTINGS = "misc";
     private static final String PREF_USE_ALT_RESOLVER = "use_alt_resolver";
     private static final String KEY_RECENTS_RAM_BAR = "recents_ram_bar";
+    private static final String KEY_CLEAR_RECENTS_POSITION = "clear_recents_position";
     private static final String KEY_DUAL_PANE = "dual_pane";
     private static final String KEY_HIGH_END_GFX = "high_end_gfx";
     private static final String PREF_CUSTOM_CARRIER_LABEL = "custom_carrier_label";
@@ -58,6 +59,7 @@ public class UserInterface extends SettingsPreferenceFragment implements OnPrefe
     private CheckBoxPreference mUseAltResolver;
     private PreferenceCategory mMisc;
     private Preference mRamBar;
+    ListPreference mClearPosition;
     private CheckBoxPreference mDualPane;
     private CheckBoxPreference mHighEndGfx;
     private Preference mCustomLabel;
@@ -102,6 +104,13 @@ public class UserInterface extends SettingsPreferenceFragment implements OnPrefe
         mRamBar = findPreference(KEY_RECENTS_RAM_BAR);
         mRamBar.setOnPreferenceChangeListener(this);
         updateRamBar();
+
+	mClearPosition = (ListPreference) findPreference(KEY_CLEAR_RECENTS_POSITION);
+        int ClearSide = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.CLEAR_RECENTS_POSITION, 0);
+        mClearPosition.setValue(String.valueOf(ClearSide));
+        mClearPosition.setSummary(mClearPosition.getEntry());
+        mClearPosition.setOnPreferenceChangeListener(this);
 
         mDualPane = (CheckBoxPreference) findPreference(KEY_DUAL_PANE);
         mDualPane.setOnPreferenceChangeListener(this);
@@ -173,6 +182,13 @@ public class UserInterface extends SettingsPreferenceFragment implements OnPrefe
                     lowBatteryWarning);
             mLowBatteryWarning.setSummary(mLowBatteryWarning.getEntries()[index]);
             return true;
+	} else if (preference == mClearPosition) {
+		  int side = Integer.valueOf((String) newValue);
+		  int index = mClearPosition.findIndexOfValue((String) newValue);
+		  Settings.System.putInt(getActivity().getContentResolver(),
+			  Settings.System.CLEAR_RECENTS_POSITION, side);
+		  mClearPosition.setSummary(mClearPosition.getEntries()[index]);
+	    return true;
         } else if (preference == mUseAltResolver) {
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.ACTIVITY_RESOLVER_USE_ALT,
