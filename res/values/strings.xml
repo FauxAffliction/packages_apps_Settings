@@ -5801,6 +5801,28 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- cLock settings -->
     <string name="chronus_title">cLock</string>
 
+    <!-- Status bar | Clock -->
+    <string name="status_bar_clock">Clock and date</string>
+    <string name="status_bar_clock_title">Clock and date style</string>
+    <string name="clock_title_enable">Clock alignment</string>
+    <string name="clock_enabled">Enabled</string>
+    <string name="clock_disabled">Disabled</string>
+    <string name="clock_color_title">Clock color</string>
+    <string name="status_bar_clock_style_reset">Reset color</string>
+    <string name="status_bar_show_clock_title">Show clock</string>
+    <string name="status_bar_am_pm_title">AM/PM style</string>
+    <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
+    <string name="enable_clock_weekday">Day of the week</string>
+    <string name="enable_clock_weekday_summary">Abbreviated day of the week before the time</string>
+    <string name="right_clock">Right clock</string>
+    <string name="center_clock">Center clock</string>
+    <string name="clock_date_display">Date</string>
+    <string name="clock_date_display_summary">Display custom date before the clock</string>
+    <string name="clock_date_style">Date style</string>
+    <string name="clock_date_format">Date format</string>
+    <string name="clock_date_string_edittext_title">Must be in DateFormat eg. MM/dd/yy</string>
+    <string name="clock_date_string_edittext_summary">Enter string</string>
+
     <!-- Touckey Light Timeout -->
     <string name="touchkey_timeout_title">Touchkey light timeout</string>
     <string name="touchkey_timeout_1s">1 second</string>
@@ -5844,6 +5866,289 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Wi-Fi settings screen, setting summary for setting the Wi-Fi priority-->
     <string name="wifi_setting_priority_summary">Specify the priority of Wi-Fi networks</string>
     <string name="wifi_priority_disabled">Enable Wi-Fi to specify the priority</string>
+
+    <!-- Keyboard and Input ASS methods  -->
+    <string name="title_keyboard_input">Keyboard and input methods</string>
+    <string name="disable_fullscreen_keyboard_title">Disable fullscreen keyboard</string>
+    <string name="disable_fullscreen_keyboard_summary">Landscape keyboard will never take up entire screen</string>
+
+    <string name="lockscreen_use_widget_container_carousel_title">Use widget carousel in portrait</string>
+    <string name="lockscreen_use_widget_container_carousel_summary">Use carousel animation in portrait like it is in landscape when switching between lockscreen widgets.</string>
+
+    <string name="lockscreen_widgets_title">Enable all widgets</string>
+    <string name="lockscreen_widgets_summary">Ability to add widgets on lockscreen</string>
+    <string name="lockscreen_widgets_all_title">Enable all widgets</string>
+    <string name="lockscreen_widgets_all_summary">Ability to add widgets on lockscreen</string>
+
+    <string name="disable_bootanimation_title">Disable boot animation</string>
+    <string name="custom_bootanimation_title">Custom boot animation</string>
+    <string name="custom_bootanimation_summary">Select bootanimation zip from sdcard. Previous bootanimation will be backed up to /system/media.</string>
+    <string name="install_file_manager_error">No application found to pick the zip file. Please install a file manager.</string>
+    <string name="insult_jerk">Animation disabled.</string>
+    <string name="insult_protekk">Animation disabled.</string>
+    <string name="insult_unicorns">Animation disabled.</string>
+
+    <string name="dual_pane_prefs_title">Dual pane preferences</string>
+    <string name="dual_pane_prefs_summary">Choose when to use dual pane preferences</string>
+    <string name="dual_pane_prefs_on">Always</string>
+    <string name="dual_pane_prefs_off">Never</string>
+    <string name="dual_pane_prefs_landscape">Only in landscape</string>
+
+    <string name="circle_battery_color">Circle color</string>
+    <string name="circle_battery_title">Battery circle style</string>
+    <string name="battery_text_color">Percentage text color</string>
+    <string name="battery_text_charging_color">Percentage text charging color</string>
+    <string name="circle_battery_animation_speed">Circle animation speed</string>
+    <string name="circle_battery_animation_speed_none">None</string>
+    <string name="circle_battery_animation_speed_slow">Slow</string>
+    <string name="circle_battery_animation_speed_stock">Normal</string>
+    <string name="circle_battery_animation_speed_fast">Fast</string>
+    <string name="status_bar_battery_icon_style_reset">Reset icon colors</string>
+    <string name="status_bar_battery_bar_style_reset">Reset battery bar colors</string>
+
+    <!-- Scroller options -->
+  <string name="scroller_options">Scroller options</string>
+        <string name="scroll">Scroller</string>
+  <string name="scroll_title">Scroller options</string>
+  <string name="scroll_summary">Adjust feel of your scroller</string>
+
+  <string name="scroll_friction_title">Scroll friction</string>
+  <string name="custom_fling_velocity_title">Scroll fling velocity</string>
+
+    <!-- Do not disturb -->
+  <string name="status_bar_donotdisturb_title">Do not disturb</string>
+  <string name="status_bar_donotdisturb_summary">Disable ticker animation for incoming notifications</string>
+
+   <!-- High End Gfx Effects -->
+    <string name="high_end_gfx_title">High end graphic effects</string>
+    <string name="high_end_gfx_summary">Enable graphic effects disabled on lower end devices</string>
+    
+    <string name="summary_expanded_desktop">%1$s</string>
+    <string name="expanded_desktop_summary">Show or change expanded desktop mode</string>
+    <string name="expanded_desktop_disabled">Off</string>
+    <string name="expanded_desktop_only_nav_bar">Hide navigation bar</string>
+    <string name="expanded_desktop_only_status_bar">Hide status bar</string>
+    <string name="expanded_desktop_both_hidden">Hide navigation and status bar</string>
+
+    <string name="vibrate_notif_expand_title">Vibrate on expand</string>
+    <string name="vibrate_notif_expand_summary">Vibrate when expanding notifications (requires UI restart)</string>
+
+    <!-- Launch music player when headset is connected -->
+    <string name="headset_connect_player_title">Launch music app</string>
+    <string name="headset_connect_player_summary">Launch the default music app when headset is connected</string>
+
+    <!-- Safe headset volume restore checkbox -->
+    <string name="safe_headset_volume_title">Safe headset volume</string>
+    <string name="safe_headset_volume_summary">Prevent loud volume levels when headset is first plugged in</string>
+
+    <!-- Less Notification sounds -->
+    <string name="less_notification_sounds_title">Less Frequent Notification Sounds</string>
+    <string name="less_notification_sounds_summary">Limit the notification sounds of each app to only play once per set time period</string>
+
+    <!-- Waiver -->
+    <string name="cyanogenmod_waiver_title">Waiver</string>
+    <string name="cyanogenmod_waiver_body">Changing this setting may be against your state or government laws.\n\nIn selecting \'OK\' below, you acknowledge this warning and waive, indemnify and hold harmless CyanogenMod and its contributors from all legal liabilities.</string>
+
+   <!-- Shortcuts -->
+    <string name="lock_screen_shortcuts_title">Static lockscreen shortcuts</string>
+    <string name="lock_screen_shortcuts_summary">Under Clock Line up Shortcuts</string>
+    <string name="lock_screen_shortcuts_add">Add</string>
+    <string name="lock_screen_shortcuts_reset">Reset</string>
+    <string name="lock_screen_shortcuts_reset_message">Reset lock screen shortcuts?</string>
+    <string name="lock_screen_shortcuts_limit">Only 6 shorcuts are allowed!</string>
+    <string name="icon_picker_type">Select icon type:</string>
+    <string name="icon_default">Default</string>
+    <string name="icon_presets">Presets</string>
+    <string name="icon_custom">Custom</string>
+    <string name="choose_app">Choose application</string>
+
+    <!-- Swap volume buttons when the screen is rotated by 90 or 180 degrees -->
+    <string name="swap_volume_buttons_title">Swap volume buttons</string>
+    <string name="swap_volume_buttons_summary">Swap volume buttons when the screen is rotated by 90 or 180 degrees</string>
+
+    <!--  Display settings screen, summary fragment for screen saver options, activate when wirelessly charging -->
+    <string name="screensaver_settings_summary_wireless">While charging wirelessly</string> 
+
+    <!-- Automatic brightness customization -->
+    <string name="light_sensor_current_value">Current light sensor value: <xliff:g id="light_level">%d</xliff:g> lux</string>
+    <string name="auto_brightness_dialog_title">Automatic brightness levels</string>
+    <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> lux</string>
+    <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g> -\n\u221e lux</string>
+    <string name="auto_brightness_brightness_format"><xliff:g id="percent">%s</xliff:g>%%</string>
+    <string name="auto_brightness_adjust_button">Adjust</string>
+    <string name="auto_brightness_close_button">Close</string>
+    <string name="auto_brightness_reset_button">Reset</string>
+    <string name="auto_brightness_split_dialog_title">Split brightness level</string>
+    <string name="auto_brightness_level_dialog_title">Light level setup</string>
+    <string name="auto_brightness_lux">Ambient brightness (lux)</string>
+    <string name="auto_brightness_backlight">Screen brightness (%)</string>
+    <string name="auto_brightness_reset_dialog_title">Reset levels?</string>
+    <string name="auto_brightness_reset_confirmation">All brightness levels will be reset to their default settings.</string>
+    <string name="auto_brightness_split_lux_format">Split position (between <xliff:g id="min">%1$d</xliff:g> and <xliff:g id="max">%2$d</xliff:g> lux)</string>
+    <string name="auto_brightness_level_options">Light level options</string>
+    <string name="auto_brightness_menu_edit_lux">Ambient brightness range</string>
+    <string name="auto_brightness_menu_split">Split</string>
+    <string name="auto_brightness_menu_remove">Remove</string>
+    <string name="auto_brightness_preview">Preview</string>
+    <string name="auto_brightness_preview_dialog_title">Brightness curve preview</string>
+    <string name="auto_brightness_help_dialog_title">Help</string>
+    <string name="auto_brightness_help_text"><b>How is brightness calculated?</b>
+\n\n
+The brightness curve is calculated by performing a <i>cubic spline interpolation</i>
+on a given number of <i>control points</i>. It\'s not a \'bucket-type\' calculation where
+screen brightness will stay constant for a specific range of ambient brightness. That way,
+small changes in ambient brightness do not cause a large jump in screen brightness; however,
+it can be a little hard to predict the exact consequences of changing control points.\n
+To help with that, a preview of the calculated curve can be examined. Please note that the
+preview shows the curve in <i>logarithmic</i> scale, so that all control points can be shown
+distinctively. When using a linear scale, it wouldn\'t be possible to distinguish the tendentially
+more important control points in the lower range of ambient brightness.
+\n\n
+<b>How to edit the brightness curve?</b>
+\n\n
+Each line in the brightness list corresponds to one <i>control point</i> of the
+brightness curve. To edit the brightness level of the point, you can use the slider
+present in each line. The screen brightness will be changed accordingly while touching
+the slider to give a preview of the light level.\n
+Additional options are available by long-pressing a line. By selecting \'Adjust\', you can
+both edit the ambient brightness level of the control point as well as manually input the
+desired screen brightness. Selecting \'Split\' allows you to to duplicate one line into
+two in order to insert additional control points. \'Remove\' deletes the selected line.
+    </string>
+
+    <!-- Display : Animation options -->
+    <string name="display_category_animation_options_title">Animation options</string>
+    <string name="system_power_crt_screen_off_title">CRT Screen Off</string>
+    <string name="system_power_crt_screen_off_summary">Screen will animate an Electron Beam when turned off</string>
+    <string name="system_power_crt_mode_title">CRT animation mode</string>
+    <string name="system_power_crt_mode_dialog_title">Show CRT animation</string>
+    <string name="system_power_crt_mode_horizontal">Portrait horizontal</string>
+    <string name="system_power_crt_mode_vertical">Portrait vertical</string>
+    <string name="system_power_crt_mode_both">Orientation dependent</string>
+
+    <!-- Advanced reboot options -->
+    <string name="advanced_reboot_title">Advanced reboot</string>
+    <string name="advanced_reboot_summary">When unlocked, include options in the power menu for rebooting into recovery or bootloader</string>
+
+    <!-- Notification Shortcuts -->
+    <string name="notification_shortcuts_grouptitle">Shortcuts</string>
+    <string name="notification_shortcuts_settings_title">Notification Shortcuts</string>
+    <string name="notification_shortcuts_settings_summary">Show shortcuts in the notification drawer</string>
+    <string name="notification_shortcuts_empty_title">Empty</string>
+    <string name="notification_shortcuts_edit_title">Edit Shortcut</string>
+    <string name="notification_shortcuts_edit_msg">Select or change the desired application or icon</string>
+    <string name="notification_shortcuts_reset_title">Clear Shortcuts</string>
+    <string name="notification_shortcuts_category_reset_title">Reset</string>
+    <string name="notification_shortcuts_title">Shortcuts</string>
+    <string name="notification_shortcuts_icon_picker_stock_icons_title">Stock Icons</string>
+    <string name="notification_shortcuts_quantity_title">Shortcut Quantity</string>
+    <string name="notification_shortcuts_quantity_summary">The number of shortcuts to display</string>
+    <string name="notification_shortcuts_move_text">Change Order</string>
+    <string name="notification_shortcuts_move_up">Moved <xliff:g id="app_name">%s</xliff:g> up a slot</string>
+    <string name="notification_shortcuts_move_down">Moved <xliff:g id="app_name">%s</xliff:g> down a slot</string>
+    <string name="notification_shortcuts_color_title">Shortcut Icon Color</string>
+    <string name="notification_shortcuts_color_summary">Colorize the stock and/or application shortcut icons</string>
+    <string name="notification_shortcuts_colorize_toggle_title">Colorize App Icons</string>
+    <string name="notification_shortcuts_colorize_toggle_summary">Colorizes any app icons with the chosen color</string>
+    <string name="notification_shortcuts_hide_carrier_title">Hide Carrier Label</string>
+
+    <!-- Notification Icons -->
+    <string name="notification_shortcuts_icon_picker_alarm">Alarm</string>
+    <string name="notification_shortcuts_icon_picker_andy">Andy</string>
+    <string name="notification_shortcuts_icon_picker_battery">Battery</string>
+    <string name="notification_shortcuts_icon_picker_browser">Browser</string>
+    <string name="notification_shortcuts_icon_picker_calendar">Calendar</string>
+    <string name="notification_shortcuts_icon_picker_camera">Camera</string>
+    <string name="notification_shortcuts_icon_picker_cloud">Cloud</string>
+    <string name="notification_shortcuts_icon_picker_contact">Contact</string>
+    <string name="notification_shortcuts_icon_picker_directdial">Direct Dial</string>
+    <string name="notification_shortcuts_icon_picker_directmessage">Direct Message</string>
+    <string name="notification_shortcuts_icon_picker_drive">Drive</string>
+    <string name="notification_shortcuts_icon_picker_dropbox">Dropbox</string>
+    <string name="notification_shortcuts_icon_picker_email">Email</string>
+    <string name="notification_shortcuts_icon_picker_evernote">Evernote</string>
+    <string name="notification_shortcuts_icon_picker_email2">Email 2</string>
+    <string name="notification_shortcuts_icon_picker_facebook">Facebook</string>
+    <string name="notification_shortcuts_icon_picker_favorite">Favorite</string>
+    <string name="notification_shortcuts_icon_picker_file_browser">File Browser</string>
+    <string name="notification_shortcuts_icon_picker_file_browser2">File Browser2</string>
+    <string name="notification_shortcuts_icon_picker_fitness">Fitness</string>
+    <string name="notification_shortcuts_icon_picker_gallery">Gallery</string>
+    <string name="notification_shortcuts_icon_picker_gears">Gears</string>
+    <string name="notification_shortcuts_icon_picker_google_small">Google</string>
+    <string name="notification_shortcuts_icon_picker_gplus">Google Plus</string>
+    <string name="notification_shortcuts_icon_picker_gtalk">Hangouts</string>
+    <string name="notification_shortcuts_icon_picker_help">Help</string>
+    <string name="notification_shortcuts_icon_picker_joystick">Joystick</string>
+    <string name="notification_shortcuts_icon_picker_key">Keys/Accounts</string>
+    <string name="notification_shortcuts_icon_picker_laptop">Laptop</string>
+    <string name="notification_shortcuts_icon_picker_notes">Notes</string>
+    <string name="notification_shortcuts_icon_picker_luggage">Travel</string>
+    <string name="notification_shortcuts_icon_picker_maps">Maps</string>
+    <string name="notification_shortcuts_icon_picker_market">Market</string>
+    <string name="notification_shortcuts_icon_picker_movie">Movies</string>
+    <string name="notification_shortcuts_icon_picker_music">Music</string>
+    <string name="notification_shortcuts_icon_picker_nav">Navigation</string>
+    <string name="notification_shortcuts_icon_picker_phone">Phone</string>
+    <string name="notification_shortcuts_icon_picker_package">Package</string>
+    <string name="notification_shortcuts_icon_picker_pinterest">Pinterest</string>
+    <string name="notification_shortcuts_icon_picker_play">Play</string>
+    <string name="notification_shortcuts_icon_picker_pocket">Pocket</string>
+    <string name="notification_shortcuts_icon_picker_podcast">Podcast</string>
+    <string name="notification_shortcuts_icon_picker_quicksettings">Quick Settings</string>
+    <string name="notification_shortcuts_icon_picker_rss">RSS Feed</string>
+    <string name="notification_shortcuts_icon_picker_sdcard">SD Card</string>
+    <string name="notification_shortcuts_icon_picker_search">Search</string>
+    <string name="notification_shortcuts_icon_picker_sms">Messaging</string>
+    <string name="notification_shortcuts_icon_picker_tasks">Tasks</string>
+    <string name="notification_shortcuts_icon_picker_terminal">Terminal</string>
+    <string name="notification_shortcuts_icon_picker_transit">Transit</string>
+    <string name="notification_shortcuts_icon_picker_tv">TV</string>
+    <string name="notification_shortcuts_icon_picker_twitter">Twitter</string>
+    <string name="notification_shortcuts_icon_picker_unlock">Unlock</string>
+
+    <!-- Notification Behavior Preferences -->
+   <string name="notification_behaviour_title">Notification behavior</string>
+
+    <string name="pref_low_battery_warning_policy_title">Low battery warning</string>
+
+    <!-- Breathing Notifications -->
+   <string name="mms_breath">Breathing SMS</string>
+   <string name="mms_breath_summary">Will give your sms notifications a breathing effect on the statusbar.</string>
+   <string name="missed_call_breath">Breathing Missed Call</string>
+   <string name="missed_call_breath_summary">Will give your missed call notifications a breathing effect on the statusbar.</string>
+
+    <!-- About BeanStalk -->
+    <string name="about_beanstalk_settings_title">About BeanStalk</string>
+    <string name="about_beanstalk">About BeanStalk</string>
+    <string name="about_beanstalk_summary">@null</string>
+    <string name="app_name">BeanStalk</string>
+    <string name="devs">Developer</string>
+    <string name="donate_scotthartbti">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=HUUHRXDXNMZPU</string>
+    <string name="donate_cyanogenmod">http://forum.cyanogenmod.com/donate</string>
+    <string name="donate_aokp">http://aokp.co/</string>
+    <string name="beanstalk">BeanStalk Build</string>
+    <string name="beanstalk_website_title">BeanStalk Blog</string>
+    <string name="beanstalk_website_summary">Find latest news and updates about BeanStalk.</string>
+    <string name="beanstalk_source_title">BeanStalk Sources</string>
+    <string name="beanstalk_source_summary">BeanStalk source can be found at www.github.com/scotthartbti</string>
+    <string name="beanstalk_irc_title">Join me on IRC</string>
+    <string name="beanstalk_irc_summary">#aokp-sgs2 @ irc.freenode.net</string>
+    <string name="beanstalk_facebook_title">Facebook Page</string>
+    <string name="beanstalk_facebook_summary">Subscribe to BeanStalk Facebook page for updates.</string>
+    <string name="title_about">About BeanStalk</string>
+
+    <!-- TRDS Settings -->
+    <string name="trds_settings_title">Dark Stalk</string> 
+
+    <!-- Status bar notification icon opacity -->
+    <string name="status_bar_icon_opacity">Notification icon opacity</string>
+    <string name="status_bar_icon_opacity_summary">Sets opacity of status bar notification icons</string>     
+
+    <!-- Lock volume keys -->
+    <string name="sound_lock_volume_keys_title">Lock volume keys</string>
+    <string name="sound_lock_volume_keys_summary">Prevents accidental unset of silent mode by pressing volume keys</string>
+>>>>>>> 9103787... Settings: add reset option to clock color and cleanup (1/2)
 
     <!-- Stylus Icon -->
     <string name="stylus_icon_enabled_title">Show icon when using stylus</string>
