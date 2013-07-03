@@ -34,7 +34,7 @@ public class PrivacyGuardAppListAdapter extends BaseAdapter {
 
     private LayoutInflater mInflater;
 
-    private List<PrivacyGuardAppInfo> mApps;
+    private List<PrivacyGuardManager.AppInfo> mApps;
     private Map<String, Drawable> mIcons;
     private Drawable mDefaultImg;
 
@@ -65,51 +65,49 @@ public class PrivacyGuardAppListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         PrivacyGuardAppViewHolder appHolder;
-        if(convertView == null) {
+
+        if (convertView == null) {
             convertView = mInflater.inflate(R.layout.privacy_guard_manager_list_row, null);
 
             // creates a ViewHolder and children references
             appHolder = new PrivacyGuardAppViewHolder();
-            appHolder.mTitle = (TextView) convertView.findViewById(R.id.appTitle);
-            appHolder.mIcon = (ImageView) convertView.findViewById(R.id.appIcon);
-            appHolder.mPrivacyGuardIcon = (ImageView) convertView.findViewById(R.id.appPrivacyGuardIcon);
+            appHolder.title = (TextView) convertView.findViewById(R.id.app_title);
+            appHolder.icon = (ImageView) convertView.findViewById(R.id.app_icon);
+            appHolder.privacyGuardIcon = (ImageView) convertView.findViewById(R.id.app_privacy_guard_icon);
             convertView.setTag(appHolder);
         } else {
             appHolder = (PrivacyGuardAppViewHolder) convertView.getTag();
         }
 
-        PrivacyGuardAppInfo app = mApps.get(position);
+        PrivacyGuardManager.AppInfo app = mApps.get(position);
 
-        appHolder.setTitle(app.getTitle());
-        if (mIcons == null
-            || mIcons.get(app.getPackageName()) == null) {
-            appHolder.setIcon(mDefaultImg);
+        appHolder.title.setText(app.title);
+        if (mIcons == null || mIcons.get(app.packageName) == null) {
+            appHolder.icon.setImageDrawable(mDefaultImg);
         } else {
-            appHolder.setIcon(mIcons.get(app.getPackageName()));
+            appHolder.icon.setImageDrawable(mIcons.get(app.packageName));
         }
 
-        appHolder.setPrivacyGuardIcon(app.getPrivacyGuard());
+        int privacyGuardDrawableResId = app.privacyGuardEnabled
+                ? R.drawable.ic_privacy_guard : R.drawable.ic_privacy_guard_off;
+        appHolder.privacyGuardIcon.setImageResource(privacyGuardDrawableResId);
 
         return convertView;
     }
 
-    public void setListItems(List<PrivacyGuardAppInfo> list) {
+    public void setListItems(List<PrivacyGuardManager.AppInfo> list) {
         mApps = list;
     }
 
     public void setIcons(Map<String, Drawable> icons) {
-        this.mIcons = icons;
-    }
-
-    public Map<String, Drawable> getIcons() {
-        return mIcons;
+        mIcons = icons;
     }
 
     /**
      * App view holder used to reuse the views inside the list.
      */
+<<<<<<< HEAD
     public class PrivacyGuardAppViewHolder {
 
         private TextView mTitle;
@@ -137,5 +135,10 @@ public class PrivacyGuardAppListAdapter extends BaseAdapter {
                 mPrivacyGuardIcon.setImageDrawable(null);
             }
         }
+
+    public static class PrivacyGuardAppViewHolder {
+        TextView title;
+        ImageView icon;
+        ImageView privacyGuardIcon;
     }
 }
