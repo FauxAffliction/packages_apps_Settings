@@ -5939,6 +5939,30 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="wifi_setting_priority_summary">Specify the priority of Wi-Fi networks</string>
     <string name="wifi_priority_disabled">Enable Wi-Fi to specify the priority</string>
 
+    <!-- Recents RAM circle -->
+    <string name="circle_ram_title">Recents RAM circle</string>
+    <string name="circle_ram_summary">Adds a circular meter surrounding the clear recents button</string>    
+
+    <!-- Stylus Gestures -->
+    <string name="gestures_settings_title">Stylus gestures</string>
+    <string name="category_spen_title">Stylus gestures</string>
+    <string name="enable_subcat_title">Stylus</string>
+    <string name="enable_spen_title_head">Enable stylus gestures</string>
+    <string name="enable_spen_summary_head">Allows stylus button swipe gestures to launch custom actions. Warning: Applications will not be able to recieve input fired by holding stylus button.</string>
+    <string name="gestures_subcat_title">Gestures</string>
+    <string name="gestures_left_spen_title_head">Left swipe</string>
+    <string name="gestures_left_spen_summary_head">Allows to launch custom action on left swipe</string>
+    <string name="gestures_right_spen_title_head">Right swipe</string>
+    <string name="gestures_right_spen_summary_head">Allows to launch custom action on right swipe</string>
+    <string name="gestures_up_spen_title_head">Up swipe</string>
+    <string name="gestures_up_spen_summary_head">Allows to launch custom action on up swipe</string>
+    <string name="gestures_down_spen_title_head">Down swipe</string>
+    <string name="gestures_down_spen_summary_head">Allows to launch custom action on down swipe</string>
+    <string name="gestures_long_spen_title_head">Long press</string>
+    <string name="gestures_long_spen_summary_head">Allows to launch custom action on long press</string>
+    <string name="gestures_double_spen_title_head">Double tap</string>
+    <string name="gestures_double_spen_summary_head">Allows to launch custom action on double tap</string>
+
     <!-- Keyboard and Input ASS methods  -->
     <string name="title_keyboard_input">Keyboard and input methods</string>
     <string name="disable_fullscreen_keyboard_title">Disable fullscreen keyboard</string>
