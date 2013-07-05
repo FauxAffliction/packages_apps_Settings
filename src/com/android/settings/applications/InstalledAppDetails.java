@@ -45,6 +45,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
+import android.content.SharedPreferences;
 import android.hardware.usb.IUsbManager;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -141,12 +142,8 @@ public class InstalledAppDetails extends Fragment
     private Button mForceStopButton;
     private Button mClearDataButton;
     private Button mMoveAppButton;
-<<<<<<< HEAD
     private CompoundButton mNotificationSwitch, mHaloState;
-=======
-    private CompoundButton mNotificationSwitch;
     private CompoundButton mPrivacyGuardSwitch;
->>>>>>> 6a8e388... settings: Privacy Guard support
 
     private PackageMoveObserver mPackageMoveObserver;
 
@@ -409,10 +406,22 @@ public class InstalledAppDetails extends Fragment
     }
 
     private void initPrivacyGuardButton() {
-        // TODO: We probably want to disable this optional for the built-in apps
-        boolean enabled = mPm.getPrivacyGuardSetting(mAppEntry.info.packageName);
-        mPrivacyGuardSwitch.setChecked(enabled);
-        mPrivacyGuardSwitch.setOnCheckedChangeListener(this);
+        if (mPrivacyGuardSwitch != null) {
+	    SharedPreferences preferences =
+                getActivity().getSharedPreferences("privacy_guard_manager", Activity.MODE_PRIVATE);
+            final boolean disabledForAllSystemApps = !preferences.getBoolean("show_system_apps", false)
+                && (mAppEntry.info.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
+
+            mPrivacyGuardSwitch.setChecked(mPm.getPrivacyGuardSetting(mAppEntry.info.packageName));
+
+            // disable privacy guard switch if disabled for all system apps
+            // or the requested package is a built in app
+            if (disabledForAllSystemApps || isThisASystemPackage()) {
+                mPrivacyGuardSwitch.setEnabled(false);
+            } else {
+                mPrivacyGuardSwitch.setOnCheckedChangeListener(this);
+            }
+        }
     }
 
     /** Called when the activity is first created. */
@@ -1332,12 +1341,13 @@ public class InstalledAppDetails extends Fragment
         }
     }
 
-    private void setHaloState(boolean state) {
+   private void setHaloState(boolean state) {
         try {
             mNotificationManager.setHaloStatus(mAppEntry.info.packageName, state);
         } catch (android.os.RemoteException ex) {
             mHaloState.setChecked(!state); // revert
         }
+    }
 
     private void setPrivacyGuard(boolean enabled) {
         String packageName = mAppEntry.info.packageName;
@@ -1380,7 +1390,13 @@ public class InstalledAppDetails extends Fragment
                 }
             }
         } else if(v == mSpecialDisableButton) {
-            showDialogInner(DLG_SPECIAL_DISABLE, 0);
+            if((mAppEntry.info.flags & ApplicationInfo.FLAG_INSTALLED) != 0 && mAppEntry.info.enabled) {
+                showDialogInner(DLG_DISABLE, 0);
+            } else {
+                new DisableChanger(this, mAppEntry.info,
+                        PackageManager.COMPONENT_ENABLED_STATE_DEFAULT)
+                .execute((Object)null);
+            }
         } else if(v == mActivitiesButton) {
             mPm.clearPackagePreferredActivities(packageName);
             try {
@@ -1441,19 +1457,14 @@ public class InstalledAppDetails extends Fragment
             } else {
                 setNotificationsEnabled(true);
             }
-<<<<<<< HEAD
 	} else if (buttonView == mHaloState) {
-	    setHaloState(isChecked);
-	}
-=======
+            setHaloState(isChecked);
         } else if (buttonView == mPrivacyGuardSwitch) {
             if (isChecked) {
                 showDialogInner(DLG_PRIVACY_GUARD, 0);
             } else {
                 setPrivacyGuard(false);
             }
-        }
->>>>>>> 6a8e388... settings: Privacy Guard support
+	}
     }
 }
-
