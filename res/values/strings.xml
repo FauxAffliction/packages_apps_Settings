@@ -5050,7 +5050,6 @@
     <!-- Slim display settings -->
     <string name="display_title">Display</string>
     <string name="display_category_rotation_options_title">Rotation options</string>
-    <string name="display_category_light_options_title">Light options</string>
     <string name="display_category_brightness_options_title">Brightness options</string>
 
     <!-- Swap volume buttons when the screen is rotated by 90 or 180 degrees -->
@@ -5114,6 +5113,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Wakeup options -->
     <string name="display_category_wakeup_options_title">Wakeup options</string>
+    <string name="pref_home_wake_title">Home button</string>
+    <string name="pref_home_wake_summary">Pressing the home button will wake your device</string>
     <string name="pref_volume_wake_title">Volume rocker wake</string>
     <string name="pref_volume_wake_summary">Pressing the volume rocker up/down will wake the device</string>
     <string name="wakeup_when_plugged_unplugged_title">Wake up on charge</string>
@@ -5632,8 +5633,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="quicksettings">Quicksettings panel</string>
     <string name="notifications">Notifications</string>
     <string name="custom_app">Custom app</string>
+    <string name="menu_power">Power menu</string>
     <string name="blank">None</string>
     <string name="none">None</string>
+    <string name="navbar_action_home_longpress_default">None (empty home longpress action will show up navring)</string>
     <string name="take_screenshot">Screenshot</string>
     <string name="ring_vib">Ring/Vib</string>
     <string name="ring_silent">Ring/Silent</string>
