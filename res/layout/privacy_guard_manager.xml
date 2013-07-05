@@ -18,29 +18,17 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <fragment
-        android:id="@+id/privacy_guard_prefs"
-        android:name="com.android.settings.slim.privacyguard.PrivacyGuardPrefs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray"/>
     <TextView
         android:id="@+id/error"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dip"
         android:layout_gravity="center"
         android:gravity="center_horizontal"
+        android:textSize="20sp"
         android:textColor="@android:color/white"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:visibility="gone" />
-    <ListView android:id="@+id/apps_list"
-        android:drawSelectorOnTop="false"
+    <ListView android:id="@+id/appsList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clipToPadding="false"
-        android:scrollbarStyle="@*android:integer/preference_fragment_scrollbarStyle" />
+        android:layout_height="wrap_content" />
 </LinearLayout>
