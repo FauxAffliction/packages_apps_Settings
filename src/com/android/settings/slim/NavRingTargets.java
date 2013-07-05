@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 cyanogenmodroms
+ * Copyright (C) 2012 Slimroms
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -79,12 +79,8 @@ public class NavRingTargets extends SettingsPreferenceFragment implements
     private int mIconIndex = -1;
     private NavRingCustomAction mNavRingCustomAction = null;
 
-    private String[] mTargetActivities = new String[5];
-    private String[] mLongActivities = new String[5];
-    private String[] mCustomIcon = new String[5];
-    private final static String mNavRingConfigDefault = "**assist**|**null**|empty";
-
     private int mNavRingAmount;
+    private int mNavRingLong;
 
     private File customnavImage;
     private File customnavTemp;
@@ -99,8 +95,7 @@ public class NavRingTargets extends SettingsPreferenceFragment implements
     private static class NavRingCustomAction {
         String activitySettingName;
         Preference preference;
-        int index;
-        boolean longpress = false;
+        int iconIndex = -1;
     }
 
     @Override
@@ -127,15 +122,22 @@ public class NavRingTargets extends SettingsPreferenceFragment implements
         customnavImage = new File(getActivity().getFilesDir()+"navring_icon_" + mIconIndex + ".png");
         customnavTemp = new File(getActivity().getCacheDir()+"/"+"tmp_nvr_icon_" + mIconIndex + ".png");
 
-        getNavigationRingConfig();
-
         mNavRingButtonQty = (ListPreference) findPreference(PREF_NAVRING_AMOUNT);
         mNavRingButtonQty.setOnPreferenceChangeListener(this);
-        mNavRingButtonQty.setValue(mNavRingAmount + "");
+        mNavRingButtonQty.setValue(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.SYSTEMUI_NAVRING_AMOUNT, 1) + "");
 
         mEnableNavringLong = (CheckBoxPreference) findPreference("enable_navring_long");
         mEnableNavringLong.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.SYSTEMUI_NAVRING_LONG_ENABLE, 0) == 1);
+
+        String target = Settings.System.getString(mContext.getContentResolver(), Settings.System.SYSTEMUI_NAVRING[0]);
+        if (target == null || target.equals("")) {
+            Settings.System.putString(mContext.getContentResolver(), Settings.System.SYSTEMUI_NAVRING[0], "**assist**");
+        }
+
+        int navringQuantity = Settings.System.getInt(getContentResolver(),
+                Settings.System.SYSTEMUI_NAVRING_AMOUNT, 1);
 
         PreferenceGroup targetGroup = (PreferenceGroup) findPreference("targets_cat");
         targetGroup.removeAll();
@@ -143,7 +145,7 @@ public class NavRingTargets extends SettingsPreferenceFragment implements
         PackageManager pm = mContext.getPackageManager();
         Resources res = mContext.getResources();
 
-        for (int i = 0; i < mNavRingAmount; i++) {
+        for (int i = 0; i < navringQuantity; i++) {
             final int index = i;
             NavBarItemPreference pAction = new NavBarItemPreference(getActivity());
             String dialogTitle = String.format(
@@ -160,7 +162,8 @@ public class NavRingTargets extends SettingsPreferenceFragment implements
             pAction.setOnPreferenceChangeListener(this);
             targetGroup.addPreference(pAction);
 
-            String uri = mTargetActivities[index];
+            String uri = Settings.System.getString(getActivity().getContentResolver(),
+                    Settings.System.SYSTEMUI_NAVRING[index]);
 
             if (uri == null) {
                 pAction.setValue("**null**");
@@ -170,10 +173,10 @@ public class NavRingTargets extends SettingsPreferenceFragment implements
                 pAction.setValue("**app**");
             }
 
-            int navRingLong = Settings.System.getInt(mContext.getContentResolver(),
+            int mNavRingLong = Settings.System.getInt(mContext.getContentResolver(),
                          Settings.System.SYSTEMUI_NAVRING_LONG_ENABLE, 0);
 
-            if (navRingLong == 1) {
+            if (mNavRingLong == 1) {
                 ListPreference mLongPress = new ListPreference(getActivity());
                 dialogTitle = String.format(
                         getResources().getString(R.string.interface_softkeys_pref_long_title), i + 1);
@@ -186,7 +189,8 @@ public class NavRingTargets extends SettingsPreferenceFragment implements
                 mLongPress.setOnPreferenceChangeListener(this);
                 targetGroup.addPreference(mLongPress);
 
-                String uriLong = mLongActivities[index];
+                String uriLong = Settings.System.getString(getActivity().getContentResolver(),
+                        Settings.System.SYSTEMUI_NAVRING_LONG[index]);
 
                if (uriLong == null) {
                     mLongPress.setValue("**null**");
@@ -226,12 +230,13 @@ public class NavRingTargets extends SettingsPreferenceFragment implements
                 });
             }
 
-            String customIconUri = mCustomIcon[i];
-            if (customIconUri != null && !customIconUri.equals("empty")) {
+            String customIconUri = Settings.System.getString(getContentResolver(),
+                    Settings.System.NAVRING_CUSTOM_APP_ICONS[i]);
+            if (customIconUri != null && customIconUri.length() > 0) {
                 File f = new File(Uri.parse(customIconUri).getPath());
                 if (f.exists())
                     pAction.setIcon(resize(new BitmapDrawable(res, f.getAbsolutePath())));
-            } else if (customIconUri != null && uri.equals("**app**")) {
+            } else if (customIconUri != null && !customIconUri.equals("")) {
                 // here they chose another app icon
                 try {
                     pAction.setIcon(resize(pm.getActivityIcon(Intent.parseUri(uri, 0))));
@@ -263,9 +268,14 @@ public class NavRingTargets extends SettingsPreferenceFragment implements
             case R.id.reset:
                 resetNavRing();
                 resetNavRingLong();
-                mTargetActivities[0] = "**assist**";
-                mNavRingAmount = 1;
-                setNavigationRingConfig();
+
+                Settings.System.putInt(getActivity().getContentResolver(),
+                        Settings.System.SYSTEMUI_NAVRING_AMOUNT, 1);
+                Settings.System.putString(getContentResolver(),
+                       Settings.System.SYSTEMUI_NAVRING[0], (String) "");
+                Settings.System.putInt(getActivity().getContentResolver(),
+                        Settings.System.SYSTEMUI_NAVRING_LONG_ENABLE, 0);
+
                 createCustomView();
 
              default:
@@ -300,10 +310,10 @@ public class NavRingTargets extends SettingsPreferenceFragment implements
         }
         if (preference == mNavRingButtonQty) {
             int val = Integer.parseInt((String) newValue);
-            mNavRingAmount = val;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.SYSTEMUI_NAVRING_AMOUNT, val);
             resetNavRing();
             resetNavRingLong();
-            setNavigationRingConfig();
             createCustomView();
             return true;
         } else if ((preference.getKey().startsWith("interface_navring_release"))
@@ -315,22 +325,26 @@ public class NavRingTargets extends SettingsPreferenceFragment implements
             if (newValue.equals("**app**")) {
                 mNavRingCustomAction = new NavRingCustomAction();
                 mNavRingCustomAction.preference = preference;
-                mNavRingCustomAction.index = index;
                 if (longpress) {
-                    mNavRingCustomAction.activitySettingName = mLongActivities[index];
-                    mNavRingCustomAction.longpress = true;
+                    mNavRingCustomAction.activitySettingName = Settings.System.SYSTEMUI_NAVRING_LONG[index];
+                    mNavRingCustomAction.iconIndex = -1;
                 } else {
-                    mNavRingCustomAction.activitySettingName = mTargetActivities[index];
+                    mNavRingCustomAction.activitySettingName = Settings.System.SYSTEMUI_NAVRING[index];
+                    mNavRingCustomAction.iconIndex = index;
                 }
                 mPicker.pickShortcut();
             } else {
                 if (longpress) {
-                    mLongActivities[index] = (String) newValue;
+                    Settings.System.putString(getContentResolver(),
+                            Settings.System.SYSTEMUI_NAVRING_LONG[index],
+                            (String) newValue);
                 } else {
-                    mTargetActivities[index] = (String) newValue;
-                    mCustomIcon[index] = "empty";
+                    Settings.System.putString(getContentResolver(),
+                            Settings.System.SYSTEMUI_NAVRING[index],
+                            (String) newValue);
+                    Settings.System.putString(getContentResolver(),
+                            Settings.System.NAVRING_CUSTOM_APP_ICONS[index], "");
                 }
-                setNavigationRingConfig();
             }
             createCustomView();
             return true;
@@ -339,26 +353,36 @@ public class NavRingTargets extends SettingsPreferenceFragment implements
     }
 
     public void shortcutPicked(String uri, String friendlyName, Bitmap bmp, boolean isApplication) {
-        if (!mNavRingCustomAction.longpress) {
-            if (bmp == null) {
-                mCustomIcon[mNavRingCustomAction.index] = "empty";
-            } else {
-                String iconName = getIconFileName(mNavRingCustomAction.index);
-                FileOutputStream iconStream = null;
-                try {
-                    iconStream = mContext.openFileOutput(iconName, Context.MODE_WORLD_READABLE);
-                } catch (FileNotFoundException e) {
-                    return; // NOOOOO
+        if (Settings.System.putString(getActivity().getContentResolver(),
+                mNavRingCustomAction.activitySettingName, uri)) {
+            if (mNavRingCustomAction.iconIndex != -1) {
+                if (bmp == null) {
+                    Settings.System
+                            .putString(
+                                    getContentResolver(),
+                                    Settings.System.NAVRING_CUSTOM_APP_ICONS[mNavRingCustomAction.iconIndex],
+                                    "");
+                } else {
+                    String iconName = getIconFileName(mNavRingCustomAction.iconIndex);
+                    FileOutputStream iconStream = null;
+                    try {
+                        iconStream = mContext.openFileOutput(iconName, Context.MODE_WORLD_READABLE);
+                    } catch (FileNotFoundException e) {
+                        return; // NOOOOO
+                    }
+                    bmp.compress(Bitmap.CompressFormat.PNG, 100, iconStream);
+                    Settings.System
+                            .putString(
+                                    getContentResolver(),
+                                    Settings.System.NAVRING_CUSTOM_APP_ICONS[mNavRingCustomAction.iconIndex], "");
+                    Settings.System
+                            .putString(
+                                    getContentResolver(),
+                                    Settings.System.NAVRING_CUSTOM_APP_ICONS[mNavRingCustomAction.iconIndex],
+                                    Uri.fromFile(mContext.getFileStreamPath(iconName)).toString());
                 }
-                bmp.compress(Bitmap.CompressFormat.PNG, 100, iconStream);
-                mCustomIcon[mNavRingCustomAction.index] =
-                                Uri.fromFile(mContext.getFileStreamPath(iconName)).toString();
             }
-            mTargetActivities[mNavRingCustomAction.index] = uri;
-        } else {
-            mLongActivities[mNavRingCustomAction.index] = uri;
         }
-        setNavigationRingConfig();
     }
 
     private String getIconFileName(int index) {
@@ -368,9 +392,11 @@ public class NavRingTargets extends SettingsPreferenceFragment implements
     private String getProperSummary(int i, boolean longpress) {
         String uri = "";
         if (longpress)
-            uri = mLongActivities[i];
+            uri = Settings.System.getString(getActivity().getContentResolver(),
+                    Settings.System.SYSTEMUI_NAVRING_LONG[i]);
         else
-            uri = mTargetActivities[i];
+            uri = Settings.System.getString(getActivity().getContentResolver(),
+                    Settings.System.SYSTEMUI_NAVRING[i]);
 
         if (uri == null)
                 return getResources().getString(R.string.none);
@@ -397,7 +423,7 @@ public class NavRingTargets extends SettingsPreferenceFragment implements
             else if (uri.equals("**screenoff**"))
                     return getResources().getString(R.string.screen_off);
             else if (uri.equals("**power**"))
-                    return getResources().getString(R.string.menu_power);
+                    return getResources().getString(R.string.power);
             else if (uri.equals("**assist**"))
                     return getResources().getString(R.string.google_now);
         } else {
@@ -407,7 +433,8 @@ public class NavRingTargets extends SettingsPreferenceFragment implements
     }
 
     private Drawable getNavRingIconImage(int index, boolean landscape) {
-        String uri = mTargetActivities[index];
+        String uri = Settings.System.getString(getActivity().getContentResolver(),
+                Settings.System.SYSTEMUI_NAVRING[index]);
 
         int resId = 0;
         PackageManager pm = mContext.getPackageManager();
@@ -481,62 +508,19 @@ public class NavRingTargets extends SettingsPreferenceFragment implements
 
     public void resetNavRing() {
             for (int i = 0; i < 5; i++) {
-                mTargetActivities[i] = "**null**";
-                mCustomIcon[i] = "empty";
+               Settings.System.putString(getActivity().getContentResolver(),
+                    Settings.System.SYSTEMUI_NAVRING[i], "**null**");
+
+                    Settings.System.putString(getActivity().getContentResolver(),
+                            Settings.System.NAVRING_CUSTOM_APP_ICONS[i], "");
             }
     }
 
     public void resetNavRingLong() {
             for (int i = 0; i < 5; i++) {
-                mLongActivities[i] = "**null**";
+               Settings.System.putString(getActivity().getContentResolver(),
+                    Settings.System.SYSTEMUI_NAVRING_LONG[i], "**null**");
             }
-    }
-
-    private void getNavigationRingConfig() {
-        // init vars to fill with them later the navring config values
-        int counter = 0;
-        int targetNumber = 0;
-        String navRingConfig = Settings.System.getString(mContext.getContentResolver(),
-                    Settings.System.SYSTEMUI_NAVRING_CONFIG);
-
-        if (navRingConfig == null) {
-            navRingConfig = mNavRingConfigDefault;
-        }
-
-        // Split out the navring config to work with and add to the list
-        for (String configValue : navRingConfig.split("\\|")) {
-            counter++;
-            if (counter == 1) {
-                mTargetActivities[targetNumber] = configValue;
-            }
-            if (counter == 2) {
-                mLongActivities[targetNumber] = configValue;
-            }
-            if (counter == 3) {
-                mCustomIcon[targetNumber] = configValue;
-                targetNumber++;
-                //reset counter due that iteration of one target is finished
-                counter = 0;
-            }
-        }
-
-        // set overall counted number off buttons
-        mNavRingAmount = targetNumber;
-    }
-
-    private void setNavigationRingConfig() {
-        String finalNavRingConfig = "";
-
-        for (int i = 0; i < mNavRingAmount; i++) {
-            if (i != 0) {
-                finalNavRingConfig += "|";
-            }
-            finalNavRingConfig += mTargetActivities[i] + "|"
-                               + mLongActivities[i] + "|"
-                               + mCustomIcon[i];
-        }
-        Settings.System.putString(mContext.getContentResolver(),
-                    Settings.System.SYSTEMUI_NAVRING_CONFIG, finalNavRingConfig);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -566,9 +550,14 @@ public class NavRingTargets extends SettingsPreferenceFragment implements
                 Bitmap bitmap = BitmapFactory.decodeFile(selectedImageUri.getPath());
                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, iconStream);
 
-                mCustomIcon[mIconIndex] =
+                Settings.System.putString(
+                        getContentResolver(),
+                        Settings.System.NAVRING_CUSTOM_APP_ICONS[mIconIndex], "");
+                Settings.System.putString(
+                        getContentResolver(),
+                        Settings.System.NAVRING_CUSTOM_APP_ICONS[mIconIndex],
                         Uri.fromFile(
-                                new File(getActivity().getApplicationContext().getFilesDir(), iconName)).getPath();
+                                new File(getActivity().getApplicationContext().getFilesDir(), iconName)).getPath());
 
                 File f = new File(selectedImageUri.getPath());
                 if (f.exists())
@@ -580,7 +569,6 @@ public class NavRingTargets extends SettingsPreferenceFragment implements
                                 + getResources().getString(
                                         R.string.custom_app_icon_successfully),
                         Toast.LENGTH_LONG).show();
-                setNavigationRingConfig();
                 createCustomView();
             }
         } else if (resultCode == Activity.RESULT_CANCELED && data != null) {
