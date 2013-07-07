@@ -6368,8 +6368,4 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="privacy_guard_manager_show_system_apps">Show system apps</string>
     <string name="privacy_guard_manager_filter_permissions">Permission filter</string>
 
-    <!-- Network speed -->
-    <string name="show_network_speed">Network speed indicator</string>
-    <string name="show_network_speed_summary">Show network speed in statsbar</string>
-
 </resources>
