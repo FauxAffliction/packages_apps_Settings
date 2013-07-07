@@ -6120,61 +6120,12 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
    <string name="missed_call_breath">Breathing Missed Call</string>
    <string name="missed_call_breath_summary">Will give your missed call notifications a breathing effect on the statusbar.</string>
 
-    <!-- About BeanStalk -->
-    <string name="about_beanstalk_settings_title">About BeanStalk</string>
-    <string name="about_beanstalk">About BeanStalk</string>
-    <string name="about_beanstalk_summary">@null</string>
-    <string name="app_name">BeanStalk</string>
-    <string name="devs">Developer</string>
-    <string name="donate_scotthartbti">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=HUUHRXDXNMZPU</string>
-    <string name="donate_cyanogenmod">http://forum.cyanogenmod.com/donate</string>
-    <string name="donate_aokp">http://aokp.co/</string>
-    <string name="beanstalk">BeanStalk Build</string>
-    <string name="beanstalk_website_title">BeanStalk Blog</string>
-    <string name="beanstalk_website_summary">Find latest news and updates about BeanStalk.</string>
-    <string name="beanstalk_source_title">BeanStalk Sources</string>
-    <string name="beanstalk_source_summary">BeanStalk source can be found at www.github.com/scotthartbti</string>
-    <string name="beanstalk_irc_title">Join me on IRC</string>
-    <string name="beanstalk_irc_summary">#aokp-sgs2 @ irc.freenode.net</string>
-    <string name="beanstalk_facebook_title">Facebook Page</string>
-    <string name="beanstalk_facebook_summary">Subscribe to BeanStalk Facebook page for updates.</string>
-    <string name="title_about">About BeanStalk</string>
-
     <!-- TRDS Settings -->
-    <string name="trds_settings_title">Dark Stalk</string> 
-
-    <!-- Status bar notification icon opacity -->
-    <string name="status_bar_icon_opacity">Notification icon opacity</string>
-    <string name="status_bar_icon_opacity_summary">Sets opacity of status bar notification icons</string>     
+    <string name="trds_settings_title">Dark Stalk</string>     
 
     <!-- Lock volume keys -->
     <string name="sound_lock_volume_keys_title">Lock volume keys</string>
     <string name="sound_lock_volume_keys_summary">Prevents accidental unset of silent mode by pressing volume keys</string>
->>>>>>> 9103787... Settings: add reset option to clock color and cleanup (1/2)
-
-    <!-- Stylus Icon -->
-    <string name="stylus_icon_enabled_title">Show icon when using stylus</string>
-    <string name="stylus_icon_enabled_summary">Show the pointer icon when hovering or drawing with the stylus</string>
-
-    <!-- Stylus Gestures -->
-    <string name="gestures_settings_title">Stylus gestures</string>
-    <string name="category_spen_title">Stylus gestures</string>
-    <string name="enable_subcat_title">Stylus</string>
-    <string name="enable_spen_title_head">Enable stylus gestures</string>
-    <string name="enable_spen_summary_head">Allows stylus button swipe gestures to launch custom actions. Warning: Applications will not be able to recieve input fired by holding stylus button.</string>
-    <string name="gestures_subcat_title">Gestures</string>
-    <string name="gestures_left_spen_title_head">Left swipe</string>
-    <string name="gestures_left_spen_summary_head">Allows to launch custom action on left swipe</string>
-    <string name="gestures_right_spen_title_head">Right swipe</string>
-    <string name="gestures_right_spen_summary_head">Allows to launch custom action on right swipe</string>
-    <string name="gestures_up_spen_title_head">Up swipe</string>
-    <string name="gestures_up_spen_summary_head">Allows to launch custom action on up swipe</string>
-    <string name="gestures_down_spen_title_head">Down swipe</string>
-    <string name="gestures_down_spen_summary_head">Allows to launch custom action on down swipe</string>
-    <string name="gestures_long_spen_title_head">Long press</string>
-    <string name="gestures_long_spen_summary_head">Allows to launch custom action on long press</string>
-    <string name="gestures_double_spen_title_head">Double tap</string>
-    <string name="gestures_double_spen_summary_head">Allows to launch custom action on double tap</string>
 
     <!-- Gestures Options -->
     <string name="gestures_action_empty">None</string>

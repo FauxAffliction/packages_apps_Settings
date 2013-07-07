@@ -142,12 +142,8 @@ public class InstalledAppDetails extends Fragment
     private Button mForceStopButton;
     private Button mClearDataButton;
     private Button mMoveAppButton;
-<<<<<<< HEAD
     private CompoundButton mNotificationSwitch, mHaloState;
-=======
-    private CompoundButton mNotificationSwitch;
     private CompoundButton mPrivacyGuardSwitch;
->>>>>>> 6a8e388... settings: Privacy Guard support
 
     private PackageMoveObserver mPackageMoveObserver;
 
@@ -1338,7 +1334,8 @@ public class InstalledAppDetails extends Fragment
             mNotificationManager.setHaloStatus(mAppEntry.info.packageName, state);
         } catch (android.os.RemoteException ex) {
             mHaloState.setChecked(!state); // revert
-        }
+	}
+    }
 
     private void setPrivacyGuard(boolean enabled) {
         String packageName = mAppEntry.info.packageName;
@@ -1448,12 +1445,8 @@ public class InstalledAppDetails extends Fragment
             } else {
                 setNotificationsEnabled(true);
             }
-<<<<<<< HEAD
-	} else { (buttonView == mHaloState)
+	} else if (buttonView == mHaloState) {
             setHaloState(isChecked);
-
-	}
-=======
         } else if (buttonView == mPrivacyGuardSwitch) {
             if (isChecked) {
                 showDialogInner(DLG_PRIVACY_GUARD, 0);
@@ -1461,6 +1454,5 @@ public class InstalledAppDetails extends Fragment
                 setPrivacyGuard(false);
             }
         }
->>>>>>> 6a8e388... settings: Privacy Guard support
     }
 }
