@@ -50,6 +50,10 @@
 
     </PreferenceCategory>
 
+	<PreferenceCategory
+	    android:key="category_light_options"
+	    android:title="@string/display_category_light_options_title">
+
         <PreferenceScreen
             android:key="battery_light"
             android:title="@string/battery_light_title"

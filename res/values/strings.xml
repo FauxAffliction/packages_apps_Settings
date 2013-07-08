@@ -5119,6 +5119,7 @@
     <!-- Slim display settings -->
     <string name="display_title">Display</string>
     <string name="display_category_rotation_options_title">Rotation options</string>
+    <string name="display_category_light_options_title">Light options</string>
     <string name="display_category_brightness_options_title">Brightness options</string>
 
     <!-- Swap volume buttons when the screen is rotated by 90 or 180 degrees -->
