@@ -5923,6 +5923,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="ram_bar_button_help">Help</string>
     <string name="ram_bar_button_reset">Reset colors</string>
 
+    <!-- Recents RAM circle -->
+    <string name="circle_ram_title">Recents RAM circle</string>
+    <string name="circle_ram_summary">Adds a circular meter surrounding the clear recents button</string>
+
     <!-- Wifi settings -->
     <string name="ass_wifi_settings_title">Wi-Fi</string>
     <!-- Wi-Fi region code settings-->
@@ -5937,11 +5941,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="wifi_setting_priority_title">Wi-Fi priority</string>
     <!-- Wi-Fi settings screen, setting summary for setting the Wi-Fi priority-->
     <string name="wifi_setting_priority_summary">Specify the priority of Wi-Fi networks</string>
-    <string name="wifi_priority_disabled">Enable Wi-Fi to specify the priority</string>
-
-    <!-- Recents RAM circle -->
-    <string name="circle_ram_title">Recents RAM circle</string>
-    <string name="circle_ram_summary">Adds a circular meter surrounding the clear recents button</string>    
+    <string name="wifi_priority_disabled">Enable Wi-Fi to specify the priority</string>    
 
     <!-- Stylus Gestures -->
     <string name="gestures_settings_title">Stylus gestures</string>
