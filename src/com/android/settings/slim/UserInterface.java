@@ -48,6 +48,7 @@ public class UserInterface extends SettingsPreferenceFragment implements OnPrefe
     private static final String MISC_SETTINGS = "misc";
     private static final String PREF_USE_ALT_RESOLVER = "use_alt_resolver";
     private static final String KEY_RECENTS_RAM_BAR = "recents_ram_bar";
+    private static final String KEY_RECENTS_RAM_CIRCLE = "recents_ram_circle";
     private static final String KEY_CLEAR_RECENTS_POSITION = "clear_recents_position";
     private static final String KEY_DUAL_PANE = "dual_pane";
     private static final String KEY_HIGH_END_GFX = "high_end_gfx";
@@ -58,6 +59,7 @@ public class UserInterface extends SettingsPreferenceFragment implements OnPrefe
     private CheckBoxPreference mUseAltResolver;
     private PreferenceCategory mMisc;
     private Preference mRamBar;
+    CheckBoxPreference mRamCircle;
     ListPreference mClearPosition;
     private CheckBoxPreference mDualPane;
     private CheckBoxPreference mHighEndGfx;
@@ -103,6 +105,10 @@ public class UserInterface extends SettingsPreferenceFragment implements OnPrefe
         mRamBar = findPreference(KEY_RECENTS_RAM_BAR);
         mRamBar.setOnPreferenceChangeListener(this);
         updateRamBar();
+
+	mRamCircle = (CheckBoxPreference) findPreference(KEY_RECENTS_RAM_CIRCLE);
+        mRamCircle.setChecked(Settings.System.getBoolean(mContext.getContentResolver(),
+                Settings.System.RECENTS_RAM_CIRCLE, false));
 
 	mClearPosition = (ListPreference) findPreference(KEY_CLEAR_RECENTS_POSITION);
         int ClearSide = Settings.System.getInt(getActivity().getContentResolver(),
@@ -192,6 +198,11 @@ public class UserInterface extends SettingsPreferenceFragment implements OnPrefe
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.ACTIVITY_RESOLVER_USE_ALT,
                     (Boolean) newValue ? 1 : 0);
+            return true;
+	} else if (preference == mRamCircle) {
+            Settings.System.putBoolean(getActivity().getContentResolver(),
+                    Settings.System.RECENTS_RAM_CIRCLE,
+                    ((CheckBoxPreference) preference).isChecked());
             return true;
         } else if (preference == mDualPane) {
             Settings.System.putInt(getActivity().getContentResolver(),
