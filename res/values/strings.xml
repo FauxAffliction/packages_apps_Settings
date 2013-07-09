@@ -5923,10 +5923,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="ram_bar_button_help">Help</string>
     <string name="ram_bar_button_reset">Reset colors</string>
 
-    <!-- Recents RAM circle -->
-    <string name="circle_ram_title">Recents RAM circle</string>
-    <string name="circle_ram_summary">Adds a circular meter surrounding the clear recents button</string>
-
     <!-- Wifi settings -->
     <string name="ass_wifi_settings_title">Wi-Fi</string>
     <!-- Wi-Fi region code settings-->
@@ -5962,6 +5958,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="gestures_long_spen_summary_head">Allows to launch custom action on long press</string>
     <string name="gestures_double_spen_title_head">Double tap</string>
     <string name="gestures_double_spen_summary_head">Allows to launch custom action on double tap</string>
+    <string name="wifi_priority_disabled">Enable Wi-Fi to specify the priority</string>
 
     <!-- Keyboard and Input ASS methods  -->
     <string name="title_keyboard_input">Keyboard and input methods</string>
